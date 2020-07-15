@@ -1,0 +1,783 @@
+package Restaurant;
+import java.awt.Component;
+import java.awt.TextField;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+import java.lang.Math;
+import java.util.Calendar.Builder;
+import java.time.Clock;
+import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+
+
+public class Restaurant extends javax.swing.JFrame {
+
+     String Meal;
+     String Drink;
+     String TotalCost;
+    public Restaurant() {
+        initComponents();
+    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jBtnTotal = new javax.swing.JButton();
+        jBtnReceipt = new javax.swing.JButton();
+        jBtnReset = new javax.swing.JButton();
+        jBtnExit = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jlblTax1 = new javax.swing.JLabel();
+        jlblMilkShake = new javax.swing.JLabel();
+        jlblMaza = new javax.swing.JLabel();
+        jTxtCoke = new javax.swing.JTextField();
+        jTxtMilkShake = new javax.swing.JTextField();
+        jTxtMaza = new javax.swing.JTextField();
+        jlblCoke = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jlblChickenBurger = new javax.swing.JLabel();
+        jlblVegeBurger = new javax.swing.JLabel();
+        jlblMaharajaBurger = new javax.swing.JLabel();
+        jTxtChickenBurger = new javax.swing.JTextField();
+        jTxtVegeBurger = new javax.swing.JTextField();
+        jTxtMaharajaBurger = new javax.swing.JTextField();
+        jlblTax5 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jlblCostofMeal = new javax.swing.JLabel();
+        jlblCostOfDrinks = new javax.swing.JLabel();
+        jlblTotalCostofMeal = new javax.swing.JLabel();
+        jTxtCostofMeal = new javax.swing.JTextField();
+        jTxtCostofDrinks = new javax.swing.JTextField();
+        jTxtTotalCostofMeal = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jTxtTax = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTxtSubTotal = new javax.swing.JTextField();
+        jTxtTotal = new javax.swing.JTextField();
+        jlblTax = new javax.swing.JLabel();
+        jlblSubTotal = new javax.swing.JLabel();
+        jlblTotal = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxtReceipt = new javax.swing.JTextArea();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 12));
+
+        jBtnTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnTotal.setText("Total");
+        jBtnTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnTotalActionPerformed(evt);
+            }
+        });
+
+        jBtnReceipt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnReceipt.setText("Receipt");
+        jBtnReceipt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnReceiptActionPerformed(evt);
+            }
+        });
+
+        jBtnReset.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnReset.setText("Reset");
+        jBtnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnResetActionPerformed(evt);
+            }
+        });
+
+        jBtnExit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnExit.setText("Exit");
+        jBtnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jBtnTotal)
+                .addGap(137, 137, 137)
+                .addComponent(jBtnReceipt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addComponent(jBtnReset)
+                .addGap(169, 169, 169)
+                .addComponent(jBtnExit)
+                .addGap(121, 121, 121))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnTotal)
+                    .addComponent(jBtnReceipt)
+                    .addComponent(jBtnReset)
+                    .addComponent(jBtnExit))
+                .addContainerGap(69, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1050, 180));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 12));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 66)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("The Disaster Caf'e");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 8));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(331, 331, 331)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(415, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, -1));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 12));
+
+        jlblTax1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jlblTax1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblTax1.setText("Drinks");
+
+        jlblMilkShake.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblMilkShake.setText("Milk Shake");
+
+        jlblMaza.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblMaza.setText("Bear");
+
+        jTxtCoke.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTxtCoke.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtCoke.setText("0");
+
+        jTxtMilkShake.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTxtMilkShake.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtMilkShake.setText("0");
+
+        jTxtMaza.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTxtMaza.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtMaza.setText("0");
+
+        jlblCoke.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblCoke.setText("Coke");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTxtCoke, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(168, 168, 168)
+                            .addComponent(jlblTax1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addComponent(jlblMilkShake, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(70, 70, 70)
+                            .addComponent(jTxtMilkShake, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(35, Short.MAX_VALUE)
+                    .addComponent(jlblMaza, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(68, 68, 68)
+                    .addComponent(jTxtMaza, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(35, 35, 35)))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jlblCoke, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(319, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlblTax1)
+                .addGap(18, 18, 18)
+                .addComponent(jTxtCoke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTxtMilkShake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblMilkShake))
+                .addContainerGap(93, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(161, 161, 161)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlblMaza)
+                        .addComponent(jTxtMaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(47, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(59, 59, 59)
+                    .addComponent(jlblCoke)
+                    .addContainerGap(155, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 160, 520, 260));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 12));
+
+        jlblChickenBurger.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblChickenBurger.setText("Chicken Burger");
+
+        jlblVegeBurger.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblVegeBurger.setText("Vege Burger");
+
+        jlblMaharajaBurger.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblMaharajaBurger.setText("Maharaja Burger");
+
+        jTxtChickenBurger.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTxtChickenBurger.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtChickenBurger.setText("0");
+        jTxtChickenBurger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtChickenBurgerActionPerformed(evt);
+            }
+        });
+
+        jTxtVegeBurger.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTxtVegeBurger.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtVegeBurger.setText("0");
+
+        jTxtMaharajaBurger.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTxtMaharajaBurger.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtMaharajaBurger.setText("0");
+
+        jlblTax5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jlblTax5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblTax5.setText("Meals");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(jlblTax5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jlblChickenBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(197, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(55, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTxtChickenBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jlblVegeBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(68, 68, 68)
+                            .addComponent(jTxtVegeBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jlblMaharajaBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(36, 36, 36)
+                            .addComponent(jTxtMaharajaBurger, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(35, 35, 35)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jlblTax5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlblChickenBurger)
+                .addContainerGap(166, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(46, 46, 46)
+                    .addComponent(jTxtChickenBurger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(31, 31, 31)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTxtVegeBurger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlblVegeBurger))
+                    .addGap(28, 28, 28)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlblMaharajaBurger)
+                        .addComponent(jTxtMaharajaBurger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(47, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 540, 260));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 12));
+
+        jlblCostofMeal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblCostofMeal.setText("Cost of Meal");
+
+        jlblCostOfDrinks.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblCostOfDrinks.setText("Cost of Drinks");
+
+        jlblTotalCostofMeal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblTotalCostofMeal.setText("Total Cost of Meal");
+
+        jTxtCostofMeal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jTxtCostofDrinks.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jTxtTotalCostofMeal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlblCostofMeal, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblCostOfDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblTotalCostofMeal, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTxtCostofMeal, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtCostofDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtTotalCostofMeal, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblCostofMeal)
+                    .addComponent(jTxtCostofMeal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtCostofDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblCostOfDrinks))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtTotalCostofMeal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblTotalCostofMeal))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 540, 200));
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 12));
+
+        jTxtTax.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jTextField4.setText("jTextField1");
+
+        jTxtSubTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jTxtTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jlblTax.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblTax.setText("Tax");
+
+        jlblSubTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblSubTotal.setText("SubTotal");
+
+        jlblTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlblTotal.setText("Total");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jlblTax, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTxtTax, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jlblSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(jTxtSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jlblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtTax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblTax))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblSubTotal))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblTotal)
+                    .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(331, 331, 331)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 510, 200));
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 12));
+
+        jtxtReceipt.setColumns(20);
+        jtxtReceipt.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jtxtReceipt.setRows(5);
+        jScrollPane1.setViewportView(jtxtReceipt);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 160, -1, 640));
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>                        
+
+    private void jBtnExitActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        SubClass_Child iExit=new SubClass_Child();
+        iExit.iExitSystem();
+        
+        
+    }                                        
+
+    private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {                                          
+     JTextField cleartext=null;
+     
+     for(Component c:jPanel4.getComponents()){
+         if(c.getClass().toString().contains("javax.swing.JTextField")){
+             cleartext=(JTextField)c;
+             cleartext.setText("0");
+         }
+     }
+         for(Component c:jPanel3.getComponents()){
+         if(c.getClass().toString().contains("javax.swing.JTextField")){
+             cleartext=(JTextField)c;
+             cleartext.setText("0");
+         }
+         }
+         for(Component c:jPanel5.getComponents()){
+         if(c.getClass().toString().contains("javax.swing.JTextField")){
+             cleartext=(JTextField)c;
+             cleartext.setText("");
+         }
+         }
+         for(Component c:jPanel6.getComponents()){
+         if(c.getClass().toString().contains("javax.swing.JTextField")){
+             cleartext=(JTextField)c;
+             cleartext.setText("");
+         }
+         }
+     
+         
+         
+         jtxtReceipt.setText(null);
+         
+    }                                         
+
+    private void jBtnTotalActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        
+        
+        
+        SubClass_Child ItemCost =new SubClass_Child();
+        
+        double iTax,iSubTotal,iTotal;
+                
+        ItemCost.ChickenBurger=ItemCost.pChickenBurger * Double.parseDouble(jTxtChickenBurger.getText());
+        ItemCost.VegeBurger=ItemCost.pVegeBurger * Double.parseDouble(jTxtVegeBurger.getText());
+        ItemCost.MaharajaBurger=ItemCost.pMaharajaBurger * Double.parseDouble(jTxtMaharajaBurger.getText());
+        
+        ItemCost.Coke=ItemCost.pCoke * Double.parseDouble(jTxtCoke.getText());
+        ItemCost.MilkShake=ItemCost.pMilkShake * Double.parseDouble(jTxtMilkShake.getText());
+        ItemCost.Maza=ItemCost.pMaza * Double.parseDouble(jTxtMaza.getText());
+        
+        iSubTotal=ItemCost.getAmount();
+        iTax=ItemCost.cFindTax(iSubTotal);
+        iTotal=iSubTotal+iTax;
+        
+        String SubTotal;
+        SubTotal = String.format("%.2f",iSubTotal);
+        jTxtSubTotal.setText(SubTotal);
+        
+        String Tax;
+        Tax = String.format("%.2f",iTax);
+        jTxtTax.setText(Tax);
+        
+        String Total;
+        Total = String.format("%.2f",iTotal);
+        jTxtTotal.setText(Total);
+        
+       
+        Meal = String.format("%.2f",ItemCost.Meals);
+        jTxtCostofMeal.setText(Meal);
+        
+        
+        Drink = String.format("%.2f",ItemCost.Drinks);
+        jTxtCostofDrinks.setText(Drink);
+        
+        
+        TotalCost = String.format("%.2f",ItemCost.TotalofMD);
+        jTxtTotalCostofMeal.setText(TotalCost);
+        
+        
+       
+        
+        
+        
+        
+        
+    }                                         
+
+    private void jBtnReceiptActionPerformed(java.awt.event.ActionEvent evt) {                                            
+                
+        
+        jtxtReceipt.append(
+                "\n==================================\n"+
+                "Meals:\t\t"+ jTxtCostofMeal.getText() +"\n\n" +
+                "Drinks:\t\t"+ jTxtCostofDrinks.getText() +"\n\n"+
+                "Cost of Meal:\t" +jTxtTotalCostofMeal.getText()+ "\n\n"+
+                "==================================="+ "\n\n" +
+                "Tax:\t\t"+ jTxtTax.getText()+ "\n\n"+
+                "SubTotal:\t"+ jTxtSubTotal.getText()+ "\n\n"+
+                "Total:\t\t"+ jTxtTotal.getText()+"\n"+
+                
+                "==========================================");    
+                Connection con;
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/restraunt","root","2469sachin");
+                PreparedStatement pst;
+                pst=con.prepareStatement("Insert into costr(Meal,drink,total)values(?,?,?);");
+                pst.setString(1,Meal);
+                pst.setString(2,Drink);
+                pst.setString(3,TotalCost);
+                int i=pst.executeUpdate();
+                if(i>0)
+                {
+                    JOptionPane.showMessageDialog(null,"Bill Printed Succesfully");
+                }
+                } catch (SQLException | ClassNotFoundException ex) {
+                  JOptionPane.showMessageDialog(null,ex);
+            }
+                    
+               
+     
+        
+            
+        
+        
+           
+                
+                
+                
+        
+        
+        
+    }                                           
+
+    private void jTxtChickenBurgerActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) throws ClassNotFoundException, IllegalAccessException, InstantiationException, UnsupportedLookAndFeelException {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Restaurant().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton jBtnExit;
+    private javax.swing.JButton jBtnReceipt;
+    private javax.swing.JButton jBtnReset;
+    private javax.swing.JButton jBtnTotal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTxtChickenBurger;
+    private javax.swing.JTextField jTxtCoke;
+    private javax.swing.JTextField jTxtCostofDrinks;
+    private javax.swing.JTextField jTxtCostofMeal;
+    private javax.swing.JTextField jTxtMaharajaBurger;
+    private javax.swing.JTextField jTxtMaza;
+    private javax.swing.JTextField jTxtMilkShake;
+    private javax.swing.JTextField jTxtSubTotal;
+    private javax.swing.JTextField jTxtTax;
+    private javax.swing.JTextField jTxtTotal;
+    private javax.swing.JTextField jTxtTotalCostofMeal;
+    private javax.swing.JTextField jTxtVegeBurger;
+    private javax.swing.JLabel jlblChickenBurger;
+    private javax.swing.JLabel jlblCoke;
+    private javax.swing.JLabel jlblCostOfDrinks;
+    private javax.swing.JLabel jlblCostofMeal;
+    private javax.swing.JLabel jlblMaharajaBurger;
+    private javax.swing.JLabel jlblMaza;
+    private javax.swing.JLabel jlblMilkShake;
+    private javax.swing.JLabel jlblSubTotal;
+    private javax.swing.JLabel jlblTax;
+    private javax.swing.JLabel jlblTax1;
+    private javax.swing.JLabel jlblTax5;
+    private javax.swing.JLabel jlblTotal;
+    private javax.swing.JLabel jlblTotalCostofMeal;
+    private javax.swing.JLabel jlblVegeBurger;
+    private javax.swing.JTextArea jtxtReceipt;
+    // End of variables declaration                   
+}
+package Restaurant;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author DELL
+ */
+public class SuperClass_Parent {
+    public double ChickenBurger;
+    public double VegeBurger;
+    public double MaharajaBurger;
+    
+    public double Coke;
+    public double MilkShake;
+    public double Maza;
+    
+    public double TotalofMD;
+    public double AllTotalofMD;
+    
+    public double Meals;
+    public double Drinks;
+    
+    public double getAmount()
+    {
+    Meals=ChickenBurger+VegeBurger+MaharajaBurger;
+    Drinks=Coke+MilkShake+Maza;
+    TotalofMD=Meals+Drinks;
+    AllTotalofMD=TotalofMD;
+    return AllTotalofMD;
+    
+    
+    }
+    
+private JFrame frame;
+
+public void iExitSystem()
+{
+frame=new JFrame("Exit");
+if(JOptionPane.showConfirmDialog(frame,"Confirm if you want to exit", "Restaurant Management System", JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION){
+System.exit(0);
+}
+}
+//Price
+
+ public double pChickenBurger=136.00;
+    public double pVegeBurger=56.00;
+    public double pMaharajaBurger=90.00;
+    
+    public double pCoke=76.00;
+    public double pMilkShake=90.90;
+    public double pMaza=100.00;
+
+public double mcTax=0.99;
+
+public double cFindTax(double cAmount)
+{
+double FindTax=cAmount-(cAmount*mcTax);
+return FindTax;
+}
+}
+package Restaurant;
+
+/**
+ *
+ * @author DELL
+ */
+public class SubClass_Child extends SuperClass_Parent{
+    
+    
+    
+    
+}
+
